@@ -14,11 +14,10 @@ from tqdm import tqdm
 
 import config
 from algoritmos.ejecucion import ejecutar_algoritmo
-from consola import filtrar_warnings_esperados
 from cargador_datasets import cargar_dataset, mezclar_dataset
 from ejecutor_tareas import ejecutar_tarea_npz
 from metricas import construir_fila_error, construir_fila_resultado
-from recursos import medir_tiempo_y_ram
+from recursos import medir_tiempo_y_ram, ocultar_advertencias
 from reportes import (
     construir_resumen,
     construir_resumen_compacto,
@@ -240,7 +239,7 @@ def ejecutar_paralelo(
 
 
 def main() -> None:
-    filtrar_warnings_esperados()
+    ocultar_advertencias()
 
     args = parse_args()
     datasets = tuple(args.datasets) if args.datasets else tuple(config.DATASETS_A_CORRER)

@@ -2,12 +2,23 @@ from __future__ import annotations
 
 import threading
 import time
+import warnings
 from typing import Callable, TypeVar
 
 import psutil
 
 
 T = TypeVar("T")
+
+
+def ocultar_advertencias() -> None:
+    """Oculta advertencias."""
+    warnings.filterwarnings("ignore", message="Mean of empty slice.*")
+    warnings.filterwarnings("ignore", message="invalid value encountered in divide.*")
+    warnings.filterwarnings(
+        "ignore",
+        message="The number of unique classes is greater than 50% of the number of samples.*",
+    )
 
 
 def medir_tiempo_y_ram(funcion: Callable[[], T], intervalo_segundos: float = 0.01) -> tuple[T, float, float, float]:

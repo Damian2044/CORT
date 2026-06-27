@@ -6,14 +6,13 @@ import numpy as np
 
 from algoritmos.ejecucion import ejecutar_algoritmo
 from algoritmos.utilidades import DatasetBundle
-from consola import filtrar_warnings_esperados
 from metricas import construir_fila_error, construir_fila_resultado
-from recursos import medir_tiempo_y_ram
+from recursos import medir_tiempo_y_ram, ocultar_advertencias
 
 
 def ejecutar_tarea_npz(tarea: dict[str, object]) -> dict[str, object]:
     """Worker para modalidades paralelas: carga una copia temporal y ejecuta una tarea."""
-    filtrar_warnings_esperados()
+    ocultar_advertencias()
 
     dataset = str(tarea["dataset"])
     algoritmo = str(tarea["algoritmo"])
