@@ -1,0 +1,23 @@
+# Entornos y cache de Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Resultados generados por corridas locales
+resultados/
+
+# Fuentes crudas para generar embeddings.
+# Los datasets procesados en datos/datasets/ si se pueden versionar.
+datos/fuentes/
+
+# Temporales del sistema y editores
+*.tmp
+*.log
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
