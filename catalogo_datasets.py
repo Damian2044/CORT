@@ -124,7 +124,6 @@ DATASETS: dict[str, dict[str, object]] = {
         "archivo": "grandes/turkiye.csv",
         "etiqueta": "class",
         "x": {"rango": (3, 33)},
-        "index_col_false": True,
     },
     "abalone": {
         "tipo": "csv",
