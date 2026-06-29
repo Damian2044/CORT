@@ -15,10 +15,10 @@ Este repositorio contiene el entorno experimental de **CORT**, un algoritmo de C
    Variante heurística de LIB. Usa una estimación inicial más controlada para reducir la apertura excesiva de centros.
 
 3. **COCA**  
-   Algoritmo online capacitado. En esta implementación se usa la modalidad base con capacidad uniforme aproximada `ceil(n/k)` por centro abierto. Primero calcula un valor inicial `M` mediante `coupon_collector_non_uniform`, abre centros en esa fase inicial y estima el costo de apertura con esos puntos. Luego procesa el resto del flujo asignando a centros con capacidad disponible o abriendo nuevos centros según la regla probabilística. COCA controla capacidad, pero no impone cardinalidades exactas finales.
+   Algoritmo online capacitado. En esta implementación se usa la configuración uniforme `n/k`: `n` representa el número de instancias del dataset y `k` el número objetivo de clústeres. Para cada centro se define una capacidad inicial aproximada `ceil(n/k)`. Con esas capacidades uniformes se calcula el valor inicial `M` mediante coupon collector. Luego COCA usa los primeros `M` puntos para estimar el costo de apertura y continúa procesando el flujo con asignaciones o aperturas probabilísticas. COCA controla capacidad, pero no impone cardinalidades exactas finales.
 
 4. **COCH**  
-   Variante heurística de COCA. Usa una inicialización más pequeña, basada en `k + 1`, y también trabaja con capacidad uniforme aproximada `ceil(n/k)`. Reduce el costo de la fase inicial, pero tampoco garantiza cardinalidades exactas finales.
+   Variante heurística de COCA. Usa una inicialización más pequeña: `M = k + 1`, donde `k` es el número objetivo de clústeres. También trabaja con capacidad uniforme aproximada `ceil(n/k)` durante el flujo, pero no calcula `M` con coupon collector. Reduce el costo de la fase inicial, aunque tampoco garantiza cardinalidades exactas finales.
 
 ### Algoritmo Propuesto
 
